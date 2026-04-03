@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bucket-scan options</title>
+  <link rel="stylesheet" href="./options.css" />
+</head>
+<body>
+  <main class="wrap">
+    <div class="title-wrap">
+      <img src="../../jenn.png" alt="bucket-scan" class="title-logo" />
+      <h1>bucket-scan 设置</h1>
+    </div>
+
+    <label class="row">
+      <span>启用被动检测</span>
+      <input type="checkbox" id="enablePassive" />
+    </label>
+
+    <label class="row">
+      <span>启用主动写检测（高风险）</span>
+      <input type="checkbox" id="enableActiveWriteChecks" />
+    </label>
+
+    <label class="row">
+      <span>请求超时(ms)</span>
+      <input type="number" id="scanTimeoutMs" min="1000" step="500" />
+    </label>
+
+    <label class="row">
+      <span>并发数</span>
+      <input type="number" id="maxConcurrency" min="1" max="10" />
+    </label>
+
+    <label class="row">
+      <span>重复扫描冷却(ms)</span>
+      <input type="number" id="cooldownMs" min="10000" step="10000" />
+    </label>
+
+    <div class="actions">
+      <button id="save">保存</button>
+      <span id="msg"></span>
+    </div>
+
+    <footer class="watermark">author: jenn02</footer>
+  </main>
+
+  <script type="module" src="./options.js"></script>
+</body>
+</html>

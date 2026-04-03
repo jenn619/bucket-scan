@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bucket-scan</title>
+  <link rel="stylesheet" href="./popup.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="top">
+      <div class="brand">
+        <img src="../../jenn.png" alt="bucket-scan" class="brand-logo" />
+        <h1>bucket-scan</h1>
+      </div>
+      <button id="open-options" class="ghost">设置</button>
+    </header>
+
+    <section class="stats" id="stats"></section>
+
+    <section class="switches">
+      <label class="switch-row">
+        <span>被动检测</span>
+        <input type="checkbox" id="enable-passive" />
+      </label>
+      <label class="switch-row">
+        <span>主动写检测</span>
+        <input type="checkbox" id="enable-active" />
+      </label>
+      <p class="warn">主动写检测会发送 PUT 请求，仅在授权测试场景使用。</p>
+    </section>
+
+    <section>
+      <div class="row-between">
+        <h2>最近发现</h2>
+        <div class="actions">
+          <button id="open-results">全部结果</button>
+          <button id="clear" class="danger">清空</button>
+        </div>
+      </div>
+      <ul id="recent-list" class="list"></ul>
+    </section>
+  </main>
+
+  <footer class="watermark">author: jenn02</footer>
+
+  <script type="module" src="./popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+body {
+  margin: 0;
+  font-family: Inter, "Segoe UI", sans-serif;
+  background: #0b1020;
+  color: #e6eef8;
+}
+
+.wrap {
+  padding: 16px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.title-logo {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+input,
+select {
+  background: #11182b;
+  color: #e6eef8;
+  border: 1px solid #27314a;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+input {
+  min-width: 360px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #11182b;
+}
+
+th,
+td {
+  border: 1px solid #27314a;
+  padding: 8px;
+  font-size: 13px;
+}
+
+th {
+  background: #172038;
+  text-align: left;
+}
+
+.badge-high {
+  color: #fecaca;
+  background: #7f1d1d;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.badge-medium {
+  color: #fde68a;
+  background: #78350f;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+button {
+  border: 1px solid #2e5cff;
+  background: #1e3a8a;
+  color: #fff;
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.watermark {
+  margin-top: 10px;
+  text-align: right;
+  font-size: 11px;
+  color: #8ea1c1;
+}

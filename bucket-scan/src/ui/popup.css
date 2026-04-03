@@ -1,0 +1,149 @@
+:root {
+  color-scheme: dark;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+  margin: 0;
+  width: 380px;
+  background: #0b1020;
+  color: #e6eef8;
+}
+
+.wrap {
+  padding: 12px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-logo {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+h1 {
+  font-size: 16px;
+  margin: 0;
+}
+
+h2 {
+  font-size: 13px;
+  margin: 0;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.card {
+  background: #11182b;
+  border: 1px solid #27314a;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.card .n {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.card .k {
+  color: #93a4bf;
+  font-size: 12px;
+}
+
+.switches {
+  background: #11182b;
+  border: 1px solid #27314a;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 12px;
+}
+
+.switch-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 6px 0;
+}
+
+.warn {
+  margin: 8px 0 0;
+  color: #fbbf24;
+  font-size: 11px;
+}
+
+.row-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 220px;
+  overflow: auto;
+}
+
+.item {
+  background: #11182b;
+  border: 1px solid #27314a;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  padding: 8px;
+}
+
+.item .meta {
+  color: #93a4bf;
+  font-size: 11px;
+  margin-top: 4px;
+  word-break: break-all;
+}
+
+button {
+  border: 1px solid #2e5cff;
+  background: #1e3a8a;
+  color: #fff;
+  border-radius: 6px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+button.ghost {
+  background: transparent;
+  border-color: #3f4c68;
+}
+
+button.danger {
+  background: #7f1d1d;
+  border-color: #dc2626;
+}
+
+.actions {
+  display: flex;
+  gap: 6px;
+}
+
+.watermark {
+  margin-top: 8px;
+  text-align: right;
+  font-size: 10px;
+  color: #6b7a96;
+}

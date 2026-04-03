@@ -1,0 +1,35 @@
+{
+ "manifest_version":3,
+ "name": "bucket-scan",
+ "description": "Lightweight bucket misconfiguration scanner for OSS/COS/OBS.",
+ "version": "0.1.0",
+ "icons": {
+ "16": "jenn.png",
+ "32": "jenn.png",
+ "48": "jenn.png",
+ "128": "jenn.png"
+ },
+ "action": {
+ "default_title": "bucket-scan",
+ "default_popup": "src/ui/popup.html",
+ "default_icon": {
+ "16": "jenn.png",
+ "32": "jenn.png",
+ "48": "jenn.png"
+ }
+ },
+ "background": {
+ "service_worker": "src/background/service-worker.js",
+ "type": "module"
+ },
+ "options_page": "src/ui/options.html",
+ "permissions": [
+ "storage",
+ "tabs",
+ "webRequest"
+ ],
+ "host_permissions": [
+ "<all_urls>"
+ ],
+ "minimum_chrome_version": "114"
+}
