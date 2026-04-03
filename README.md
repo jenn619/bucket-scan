@@ -1,48 +1,93 @@
 # bucket-scan
 
-轻量级浏览器扩展（Chrome/Edge, Manifest V3），用于在授权测试场景下识别对象存储桶配置风险（阿里云 OSS / 腾讯云 COS / 华为云 OBS）。
+轻量级浏览器扩展（Chrome/Edge，Manifest V3），用于**授权安全测试**场景下识别对象存储配置风险与前端资产泄露线索。
 
-## 项目定位
+支持厂商：
 
-`bucket-scan`通过监听浏览器响应头识别疑似对象存储目标，并自动执行安全检测，帮助你快速发现常见桶配置问题。
+- 阿里云 OSS
+- 腾讯云 COS
+- 华为云 OBS
+- AWS S3
+- Microsoft Azure Blob Storage
+- Google Cloud Storage (GCS)
 
->仅用于授权安全测试、漏洞自查与教学研究场景。
+>仅用于授权测试、资产自查与教学研究。
 
-## 当前功能
+## 功能概览
 
-- 被动检测（默认开启）
-  -通过响应头和域名后缀识别云厂商目标
- - 自动触发桶探测任务
-- 主动写检测（可选，默认关闭）
- - 支持 PUT 上传探测
- - 支持 ACL 写权限探测
- - 阿里云额外支持 Policy 写探测
-   -结果展示
- - Popup 最近发现（高危/中危统计）
- - 独立 Results 页面（搜索、等级筛选）
- - 支持导出 JSON 报告
-- 设置页面
- - 被动检测开关
- - 主动写检测开关（含二次确认）
- - 超时、并发、冷却时间可配置
-- UI 定制
- - 扩展 Logo 使用 `jenn.png`
- - 页面内带 `author: jenn02` 水印
+###1) 自动检测（被动 + 可选主动）
 
-## 已检测风险类型（当前版本）
+- 基于响应头/域名后缀识别对象存储目标
+- 自动执行漏洞检查
+- 可选主动写检测（PUT/ACL/Policy，默认关闭）
+
+###2) JS 敏感信息提取
+
+- 提取静态/动态加载 JS 中的对象存储 URL
+- 支持 SourceMap 暴露检测（可下载）
+
+###3)结果页能力
+
+- 漏洞结果搜索与等级筛选
+- 漏洞 URL 一键跳转
+- 响应长度展示
+- JSON 导出
+
+###4) 黑白名单规则
+
+- 白名单/黑名单域名都支持一行一条
+- 支持通配：`*.qq.com`
+- 命中即跳过检测
+
+###5) OSS 批量遍历查看
+
+- 手动输入 bucket 根地址进行批量对象浏览
+  -仅遍历类型：**图片 / pdf / doc / docx / txt**
+- 单次最多返回 **10** 个对象
+- 支持单条打开与批量打开（同样受类型与数量限制）
+
+## 当前可识别风险
 
 - 存储桶可遍历
 - ACL 可读
 - PUT 文件上传（主动）
 - ACL 可写（主动）
-- Policy 可写（仅阿里云，主动）
+- Policy 可写（阿里云，主动）
+- SourceMap 文件可下载
+- JS 泄露对象存储地址
 
-## 技术栈与结构
+## 安装（开发者模式）
 
-- Manifest V3
-- Background Service Worker 调度
-- `chrome.webRequest`采集响应头
-- `chrome.storage.local` 持久化
+1. 打开扩展管理页
+
+ - Chrome: `chrome://extensions/`
+ - Edge: `edge://extensions/`
+
+2. 开启「开发者模式」
+3. 点击「加载已解压的扩展程序」
+   4.选择项目目录：`bucket-scan/`
+
+## 使用
+
+1. 打开扩展 Popup，确认「被动检测」开启。
+2. 浏览目标站点，插件自动采集并检测。
+3. 点击「全部结果」查看漏洞详情。
+4. 点击「批量遍历」进入 bucket 批量对象查看页面。
+5. 如需主动写检测，请在 Popup/Options 中手动开启（有二次确认）。
+
+##主要配置项
+
+- `enablePassive`：被动检测开关
+- `enableActiveWriteChecks`：主动写检测开关
+- `enableJsIntel`：JS 情报提取开关
+- `enableSourceMapCheck`：SourceMap 检测开关
+- `scanTimeoutMs`：请求超时（ms）
+- `maxConcurrency`：并发数
+- `cooldownMs`：重复扫描冷却（ms）
+- `whitelistHosts`：白名单域名（不检测）
+- `blacklistHosts`：黑名单域名（不检测）
+
+##目录结构
 
 ```text
 bucket-scan/
@@ -53,58 +98,23 @@ bucket-scan/
  ├─ scanner/
  │ ├─ core.js
  │ ├─ detectVendor.js
+ │ ├─ jsIntel.js
+ │ ├─ batchTraversal.js
  │ └─ vendors/{aliyun,tencent,huawei}.js
  ├─ storage/state.js
  └─ ui/
  ├─ popup.*
  ├─ results.*
- └─ options.*
+ ├─ options.*
+ └─ batch.*
 ```
 
-## 安装方式（开发者模式）
+## 安全与合规
 
-1. 打开 Chrome/Edge 扩展管理页
-
- - Chrome: `chrome://extensions/`
- - Edge: `edge://extensions/`
-
-2. 开启「开发者模式」
-3. 点击「加载已解压的扩展程序」
-   4.选择本项目目录：`bucket-scan/`
-
-## 使用说明
-
-1. 安装后打开扩展 Popup，确认「被动检测」开启。
-2. 浏览目标站点，扩展会自动识别疑似桶目标并检测。
-3. 在 Popup 查看最近发现，或点击「全部结果」进入结果页。
-4. 如需主动写检测，在 Popup/Options 中开启（会弹窗确认）。
-5. 在 Results 页导出 JSON 报告用于留档。
-
-## 配置项说明
-
-- `enablePassive`：是否启用被动检测
-- `enableActiveWriteChecks`：是否启用主动写检测（高风险）
-- `scanTimeoutMs`：单请求超时时间（毫秒）
-- `maxConcurrency`：最大并发扫描数
-- `cooldownMs`：同目标重复扫描冷却时间（毫秒）
-
-## 安全与合规声明
-
-- 本工具不会绕过认证，不包含破坏性攻击链路。
-- 主动写检测会真实发起 PUT/ACL/Policy 请求，可能影响目标资源状态。
-- 使用前请确保你对目标拥有明确书面授权。
-
-##版本信息
-
-- 当前版本：`0.1.0`
-
-##计划中能力（Roadmap）
-
-- 白名单 host 跳过检测
-- 存储桶接管（Takeover）识别增强
-- CSV 导出报告
-  -置信度与证据链展示优化
+- 本工具不提供绕过认证、破坏性攻击或隐蔽投递能力。
+- 主动写检测会真实发起写请求，可能影响目标资源状态。
+- 使用前请确保你已获得目标系统的明确授权。
 
 ---
 
-如果你在使用中遇到问题，欢迎提 Issue 或提交 PR。
+author: jenn02
