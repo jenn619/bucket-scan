@@ -43,12 +43,29 @@ input[type="number"] {
   width: 180px;
 }
 
-input {
+input,
+textarea {
   background: #0b1020;
   color: #e6eef8;
   border: 1px solid #27314a;
   border-radius: 8px;
   padding: 6px 8px;
+}
+
+textarea {
+  width: 100%;
+  min-height: 84px;
+  resize: vertical;
+}
+
+.block {
+  display: block;
+  margin: 10px 0;
+}
+
+.block span {
+  display: block;
+  margin-bottom: 6px;
 }
 
 .actions {

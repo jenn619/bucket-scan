@@ -1,0 +1,147 @@
+sensitivePatterns:
+    - id: email
+      pattern: \b[A-Za-z0-9._\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,61}\b
+    - id: id_card
+      pattern: \b([1-9]\d{5}(19|20)\d{2}((0[1-9])|(1[0-2]))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx])\b
+    - id: phone
+      pattern: \b1[3-9]\d{9}\b
+    - id: jwt_token
+      pattern: eyJ[A-Za-z0-9_/+\-]{10,}={0,2}\.[A-Za-z0-9_/+\-\\]{15,}={0,2}\.[A-Za-z0-9_/+\-\\]{10,}={0,2}
+    - id: Aliyun_AK_ID
+      pattern: \bLTAI[A-Za-z\d]{12,30}\b
+    - id: QCloud_AK_ID
+      pattern: \bAKID[A-Za-z\d]{13,40}\b
+    - id: password
+      pattern: (?i)(?:admin_?pass|password|[a-z]{3,15}_?password|user_?pass|user_?pwd|admin_?pwd)\\?['"]*\s*[:=]\s*\\?['"][a-z0-9!@#$%&*]{5,20}\\?['"]
+    - id: wechat_webhookurl
+      pattern: \bhttps://qyapi.weixin.qq.com/cgi-bin/webhook/send\?key=[a-zA-Z0-9\-]{25,50}\b
+    - id: dingtalk_webhookurl
+      pattern: \bhttps://oapi.dingtalk.com/robot/send\?access_token=[a-z0-9]{50,80}\b
+    - id: feishu_webhookurl
+      pattern: \bhttps://open.feishu.cn/open-apis/bot/v2/hook/[a-z0-9\-]{25,50}\b
+    - id: slack_webhookurl
+      pattern: \bhttps://hooks.slack.com/services/[a-zA-Z0-9\-_]{6,12}/[a-zA-Z0-9\-_]{6,12}/[a-zA-Z0-9\-_]{15,24}\b
+    - id: grafana_api_key
+      pattern: \beyJrIjoi[a-zA-Z0-9\-_+/]{50,100}={0,2}\b
+    - id: grafana_cloud_api_token
+      pattern: \bglc_[A-Za-z0-9\-_+/]{32,200}={0,2}\b
+    - id: grafana_service_account_token
+      pattern: \bglsa_[A-Za-z0-9]{32}_[A-Fa-f0-9]{8}\b
+    - id: app_key
+      pattern: \b(?:VUE|APP|REACT)_[A-Z_0-9]{1,15}_(?:KEY|PASS|PASSWORD|TOKEN|APIKEY)['"]*[:=]"(?:[A-Za-z0-9_\-]{15,50}|[a-z0-9/+]{50,100}==?)
+    - id: 可能的敏感信息
+      pattern: (?i)((access_key|username|user|jwtkey|jwt_key|AESKEY|AES_KEY|appsecret|app_secret|access_token|password|admin_pass|admin_user|algolia_admin_key|algolia_api_key|alias_pass|alicloud_access_key|amazon_secret_access_key|amazonaws|ansible_vault_password|phone|aos_key|api_key|api_key_secret|api_key_sid|api_secret|api\.googlemaps\s+AIza|apidocs|apikey|apiSecret|app_debug|app_id|app_key|app_log_level|app_secret|appkey|appkeysecret|application_key|appspot|auth_token|authorizationToken|authsecret|aws_access|aws_access_key_id|aws_bucket|aws_key|aws_secret|aws_secret_key|aws_token|AWSSecretKey|b2_app_key|bashrc\ password|bintray_apikey|bintray_gpg_password|bintray_key|bintraykey|bluemix_api_key|bluemix_pass|browserstack_access_key|bucket_password|bucketeer_aws_access_key_id|bucketeer_aws_secret_access_key|built_branch_deploy_key|bx_password|cache_driver|cache_s3_secret_key|cattle_access_key|cattle_secret_key|certificate_password|ci_deploy_password|client_secret|client_zpk_secret_key|clojars_password|cloud_api_key|cloud_watch_aws_access_key|cloudant_password|cloudflare_api_key|cloudflare_auth_key|cloudinary_api_secret|cloudinary_name|codecov_token|conn\.login|connectionstring|consumer_key|consumer_secret|credentials|cypress_record_key|database_password|database_schema_test|datadog_api_key|datadog_app_key|db_password|db_server|db_username|dbpasswd|dbpassword|dbuser|deploy_password|digitalocean_ssh_key_body|digitalocean_ssh_key_ids|docker_hub_password|docker_key|docker_pass|docker_passwd|docker_password|dockerhub_password|dockerhubpassword|elastica_host|elastica_port|elasticsearch_password|encryption_key|encryption_password|env\.heroku_api_key|env\.sonatype_password|eureka\.awssecretkey)\s*[:=><]{1,2}\s*[\"\']{0,1}([0-9a-zA-Z\-_=+/]{8,64})[\"\']{0,1})
+    - id: 常见的云AK匹配
+      pattern: (['"]\s*(?:GOOG[\w\W]{10,30}|AZ[A-Za-z0-9]{34,40}|AKID[A-Za-z0-9]{13,20}|AKIA[A-Za-z0-9]{16}|IBM[A-Za-z0-9]{10,40}|OCID[A-Za-z0-9]{10,40}|LTAI[A-Za-z0-9]{12,20}|AK[\w\W]{10,62}|AK[A-Za-z0-9]{10,40}|AK[A-Za-z0-9]{10,40}|UC[A-Za-z0-9]{10,40}|QY[A-Za-z0-9]{10,40}|KS3[A-Za-z0-9]{10,40}|LTC[A-Za-z0-9]{10,60}|YD[A-Za-z0-9]{10,60}|CTC[A-Za-z0-9]{10,60}|YYT[A-Za-z0-9]{10,60}|YY[A-Za-z0-9]{10,40}|CI[A-Za-z0-9]{10,40}|gcore[A-Za-z0-9]{10,30})\s*['"])
+    - id: Basic_Token
+      pattern: \b[Bb]asic\s+[A-Za-z0-9+/]{18,}={0,2}\b
+    - id: Bearer_Token
+      pattern: \b[Bb]earer\s+[a-zA-Z0-9\-=._+/\\]{20,500}\b
+    - id: Slack_Webhook
+      pattern: https://hooks.slack.com/services/[a-zA-Z0-9\-_]{6,12}/[a-zA-Z0-9\-_]{6,12}/[a-zA-Z0-9\-_]{15,24}\b
+    - id: Feishu_Webhook
+      pattern: https://open.feishu.cn/open-apis/bot/v2/hook/[a-z0-9\-]{25,50}\b
+    - id: Dingtalk_Webhook
+      pattern: https://oapi.dingtalk.com/robot/send\?access_token=[a-z0-9]{50,80}\b
+    - id: Wechat_Work_Webhook
+      pattern: https://qyapi.weixin.qq.com/cgi-bin/webhook/send\?key=[a-zA-Z0-9\-]{25,50}\b
+    - id: Wechat_MP_ID
+      pattern: (gh_[a-z0-9]{11,13})
+    - id: Wechat_Work_CorpID
+      pattern: (ww[a-z0-9]{15,18})
+    - id: Wechat_APPID
+      pattern: (wx[a-z0-9]{15,18})
+    - id: Tencent_Cloud_Appkey
+      pattern: \bAPID[a-zA-Z0-9]{32,42}\b
+    - id: 地图域名
+      pattern: (webapi\.amap\.com|apis\.map\.qq\.com|api\.map\.baidu\.com|map\.qq\.com|restapi\.amap\.com)
+    - id: URL
+      pattern: (?i)\b((?:https?|ftp|file|mysql|ssh):\/\/[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,63}\b(?:[-a-zA-Z0-9@:%_\+.~#?&\/=]*))\b
+    - id: JWT
+      pattern: \bey[A-Za-z0-9-_=]+\.[A-Za-z0-9-_=]+\.[A-Za-z0-9-_.+/=]*$
+    - id: JDBC
+      pattern: jdbc:[a-zA-Z]+:\/\/[^\s]*
+    - id: authHeader
+      pattern: (?i)\bAuthorization:\s*(?:Bearer|Basic|Digest)\s+(?:[A-Za-z0-9-._~+/]+=*|[\w%]{2}==)\b
+    - id: 账户密码
+      pattern: (?:username|user|account)\s*[:=]\s*['\"](.*?)['\"]\s*,\s*(?:password|pass)\s*[:=]\s*['\"](.*?)['\"]
+    - id: ticket
+      pattern: \bjsapi_ticket\b
+    - id: 密钥
+      pattern: (?i)(?:encryption|secret|private|api|auth|access|key)\s*[:=]\s*["\']?([0-9a-fA-F]{32,})["\']?
+    - id: 偏移量
+      pattern: (?i)(?:iv|offset|init_vector)\s*[:=]\s*["\']?([0-9a-fA-F]{8,})["\']?
+    - id: swagger
+      pattern: (?i)\b((?:https?://)?(?:[a-zA-Z0-9-\.]+)\/(?:v1|v2|v3|docs|swagger|apidocs|api-docs|open-api)?\/?(swagger|api-docs)(?:\.json)?)\b
+    - id: oss
+      pattern: https?://[^\'")\s]*oss[^\'")\s]+
+    - id: access_key
+      pattern: (?i)\baccess[_]?key\s*[:=]\s*["\']([^"\']+)["\']
+    - id: oss_key
+      pattern: (?i)\boss\s*[_\s]*(?:key)?\s*[=:]\s*['\"]([A-Z0-9]+)['\"]
+    - id: apikey
+      pattern: (?i)\bapi[_]?key\s*[=:]\s*["\']([^"\']+)["\']
+    - id: apisecret
+      pattern: (?i)\bapi[_]?secret\s*[=:]\s*["\']([^"\']+)["\']
+    - id: app_key
+      pattern: (?i)\bAppKey\s*:\s*["\']([^"\']+)["\']
+    - id: app_secret
+      pattern: (?i)\bAPPSECRET\s*:\s*["\']([^"\']+)["\']
+    - id: ip地址
+      pattern: '[^0-9]((127\.0\.0\.1)|(10\.\d{1,3}\.\d{1,3}\.\d{1,3})|(172\.((1[6-9])|(2\d)|(3[01]))\.\d{1,3}\.\d{1,3})|(192\.168\.\d{1,3}\.\d{1,3}))'
+    - id: CloudKey
+      pattern: (((access)(|-|_)(key)(|-|_)(id|secret))|(LTAI[a-z0-9]{12,20}))
+    - id: WeCom_Key
+      pattern: ((corp)(id|secret))
+    - id: Sensitive_Field
+      pattern: (($$)?('|")?([\w]{0,10})((secret)|(token)|(config)|(auth)|(access)|(admin))([\w]{0,10})('|")?($$)?( |)(:|=)( |)('|")(.*?)('|")(|,))
+    - id: Source_Map
+      pattern: (\.js\.map)
+    - id: Ueditor
+      pattern: (ueditor\.(config|all)\.js)
+    - id: 特殊字符
+      pattern: (AppSecret|AppKey|AppID)
+    - id: 用户名键值对
+      pattern: (?i)"\w*user\w*"\s*:\s*".*?"
+    - id: 密码键值对
+      pattern: (?i)"\w*pass\w*"\s*:\s*".*?"
+    - id: base64匹配
+      pattern: (eyJhbGc|YWRtaW4|MTIzNDU2)[a-zA-Z0-9+/]+={0,2}
+    - id: Oss云存储桶
+      pattern: ([A|a]ccess[K|k]ey[I|i]d|[A|a]ccess[K|k]ey[S|s]ecret|[Aa]ccess-[Kk]ey)|[A|a]ccess[Kk]ey
+    - id: authorization_basic
+      pattern: basic [a-zA-Z0-9=:_\+\/-]{5,100}
+    - id: authorization_bearer
+      pattern: bearer [a-zA-Z0-9_\-\.=:_\+\/]{5,100}
+    - id: authorization_api
+      pattern: api[key|_key|\s+]+[a-zA-Z0-9_\-]{5,100}
+    - id: json_web_token
+      pattern: ey[A-Za-z0-9-_=]+\.[A-Za-z0-9-_=]+\.[A-Za-z0-9-_.+/=]*$
+    - id: Secret Key
+      pattern: (access_key|Access-Key|access_token|SecretKey|SecretId|admin_pass|admin_user|algolia_admin_key|algolia_api_key|alias_pass|alicloud_access_key|amazon_secret_access_key|amazonaws|ansible_vault_password|aos_key|api_key|api_key_secret|api_key_sid|api_secret|api.googlemaps|apiSecret|app_id|app_key|app_secret|appkey|appkeysecret|application_key|appsecret|auth_token|authorizationToken|authsecret|aws_access|aws_access_key_id|aws_bucket|aws_key|aws_secret|aws_secret_key|aws_token|AWSSecretKey|password|bucket_password|bucketeer_aws_access_key_id|bucketeer_aws_secret_access_key|client_secret|client_zpk_secret_key|clojars_password|cloud_api_key|cloud_watch_aws_access_key|cloudant_password|cloudflare_api_key|cloudflare_auth_key|cloudinary_api_secret|cloudinary_name|codecov_token|conn.login|consumer_key|consumer_secret|credentials|cypress_record_key|database_password|database_schema_test|datadog_api_key|datadog_app_key|db_password|db_server|db_username|dbpasswd|dbpassword|dbuser|deploy_password|digitalocean_ssh_key_body|digitalocean_ssh_key_ids|docker_hub_password|docker_key|docker_pass|docker_passwd|docker_password|dockerhub_password|dockerhubpassword|elastica_host|elastica_port|elasticsearch_password|encryption_key|encryption_password|env.heroku_api_key|env.sonatype_password|eureka.awssecretkey)[a-z0-9_.\-,]{0,25}[a-z0-9A-Z_ .\-,]{0,25}(=|>|:=|\||:|<=|=>|:).{0,5}['\"]([0-9a-zA-Z\-_=]{6,64})['\"]
+    - id: wx_open_secret
+      pattern: wx[a-z0-9]{15,18}
+    - id: aws_secret
+      pattern: AKIA[0-9A-Z]{16}
+    - id: aliyun_secret
+      pattern: LTAI[A-Za-z0-9]{12,30}
+    - id: google_api_key
+      pattern: AIza[0-9A-Za-z_-]{35}
+    - id: tencent_cloud_secret
+      pattern: AKID[A-Za-z0-9]{13,40}
+    - id: jd_cloud_secret
+      pattern: JDC_[0-9A-Z]{25,40}
+    - id: other_aws_secret
+      pattern: (?:A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
+    - id: alipay_openapi
+      pattern: (?:AKLT|AKTP)[a-zA-Z0-9]{35,50}
+    - id: gitlab_token
+      pattern: glpat-[a-zA-Z0-9-=_]{20,22}
+    - id: github_token
+      pattern: (?:ghp|gho|ghu|ghs|ghr|github_pat)_[a-zA-Z0-9_]{36,255}
+    - id: apple_dev_secret
+      pattern: APID[a-zA-Z0-9]{32,42}
+    - id: wecom_secret
+      pattern: ww[a-z0-9]{15,18}
+    - id: generic_key_secret
+      pattern: (?i)(['"]?(?:\w*(?:secret|oss|bucket)\w*)|ak["']?)\s*[:=]\s*(?:"[^\s,]*"|'[^\s']*'|[\d\s]+)

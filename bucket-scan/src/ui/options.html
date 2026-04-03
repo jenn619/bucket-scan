@@ -1,51 +1,71 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>bucket-scan options</title>
-  <link rel="stylesheet" href="./options.css" />
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>bucket-scan options</title>
+ <link rel="stylesheet" href="./options.css" />
 </head>
 <body>
-  <main class="wrap">
-    <div class="title-wrap">
-      <img src="../../jenn.png" alt="bucket-scan" class="title-logo" />
-      <h1>bucket-scan 设置</h1>
-    </div>
+ <main class="wrap">
+ <div class="title-wrap">
+ <img src="../../jenn.png" alt="bucket-scan" class="title-logo" />
+ <h1>bucket-scan 设置</h1>
+ </div>
 
-    <label class="row">
-      <span>启用被动检测</span>
-      <input type="checkbox" id="enablePassive" />
-    </label>
+ <label class="row">
+ <span>启用被动检测</span>
+ <input type="checkbox" id="enablePassive" />
+ </label>
 
-    <label class="row">
-      <span>启用主动写检测（高风险）</span>
-      <input type="checkbox" id="enableActiveWriteChecks" />
-    </label>
+ <label class="row">
+ <span>启用主动写检测（高风险）</span>
+ <input type="checkbox" id="enableActiveWriteChecks" />
+ </label>
 
-    <label class="row">
-      <span>请求超时(ms)</span>
-      <input type="number" id="scanTimeoutMs" min="1000" step="500" />
-    </label>
+ <label class="row">
+ <span>启用 JS 敏感信息提取</span>
+ <input type="checkbox" id="enableJsIntel" />
+ </label>
 
-    <label class="row">
-      <span>并发数</span>
-      <input type="number" id="maxConcurrency" min="1" max="10" />
-    </label>
+ <label class="row">
+ <span>检测 SourceMap 可下载</span>
+ <input type="checkbox" id="enableSourceMapCheck" />
+ </label>
 
-    <label class="row">
-      <span>重复扫描冷却(ms)</span>
-      <input type="number" id="cooldownMs" min="10000" step="10000" />
-    </label>
+ <label class="row">
+ <span>请求超时(ms)</span>
+ <input type="number" id="scanTimeoutMs" min="1000" step="500" />
+ </label>
 
-    <div class="actions">
-      <button id="save">保存</button>
-      <span id="msg"></span>
-    </div>
+ <label class="row">
+ <span>并发数</span>
+ <input type="number" id="maxConcurrency" min="1" max="10" />
+ </label>
 
-    <footer class="watermark">author: jenn02</footer>
-  </main>
+ <label class="row">
+ <span>重复扫描冷却(ms)</span>
+ <input type="number" id="cooldownMs" min="10000" step="10000" />
+ </label>
 
-  <script type="module" src="./options.js"></script>
+ <label class="block">
+ <span>白名单域名（不检测，一行一个，支持 *.qq.com）</span>
+ <textarea id="whitelistHosts" rows="4" placeholder="safe.example.com&#10;*.trusted.com"></textarea>
+ </label>
+
+ <label class="block">
+ <span>黑名单域名（不检测，一行一个，支持 *.qq.com）</span>
+ <textarea id="blacklistHosts" rows="4" placeholder="*.qq.com"></textarea>
+ </label>
+
+ <div class="actions">
+ <button id="save">保存</button>
+ <span id="msg"></span>
+ </div>
+
+ <footer class="watermark">author: jenn02</footer>
+ </main>
+
+ <script type="module" src="./options.js"></script>
 </body>
 </html>

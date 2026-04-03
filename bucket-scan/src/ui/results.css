@@ -99,6 +99,15 @@ button {
   cursor: pointer;
 }
 
+a {
+  color: #93c5fd;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #bfdbfe;
+}
+
 .watermark {
   margin-top: 10px;
   text-align: right;

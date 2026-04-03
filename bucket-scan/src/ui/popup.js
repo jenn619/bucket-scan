@@ -88,6 +88,10 @@ document.querySelector("#open-results").addEventListener("click", () => {
   chrome.tabs.create({ url: chrome.runtime.getURL("src/ui/results.html") });
 });
 
+document.querySelector("#open-batch").addEventListener("click", () => {
+  chrome.tabs.create({ url: chrome.runtime.getURL("src/ui/batch.html") });
+});
+
 document.querySelector("#open-options").addEventListener("click", () => {
   chrome.runtime.openOptionsPage();
 });

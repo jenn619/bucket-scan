@@ -1,49 +1,53 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>bucket-scan results</title>
-  <link rel="stylesheet" href="./results.css" />
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>bucket-scan results</title>
+ <link rel="stylesheet" href="./results.css" />
 </head>
 <body>
-  <main class="wrap">
-    <header>
-      <div class="title-wrap">
-        <img src="../../jenn.png" alt="bucket-scan" class="title-logo" />
-        <h1>bucket-scan · 检测结果</h1>
-      </div>
-      <div class="actions">
-        <button id="export-json">导出 JSON</button>
-        <button id="refresh">刷新</button>
-      </div>
-    </header>
+ <main class="wrap">
+ <header>
+ <div class="title-wrap">
+ <img src="../../jenn.png" alt="bucket-scan" class="title-logo" />
+ <h1>bucket-scan · 检测结果</h1>
+ </div>
+ <div class="actions">
+ <button id="export-json">导出 JSON</button>
+ <button id="refresh">刷新</button>
+ </div>
+ </header>
 
-    <section class="toolbar">
-      <input id="q" placeholder="搜索 URL / 漏洞类型 / 厂商" />
-      <select id="level">
-        <option value="all">全部等级</option>
-        <option value="high">高危</option>
-        <option value="medium">中危</option>
-      </select>
-    </section>
+ <section class="toolbar">
+ <input id="q" placeholder="搜索 URL / 漏洞类型 / 厂商" />
+ <select id="level">
+ <option value="all">全部等级</option>
+ <option value="high">高危</option>
+ <option value="medium">中危</option>
+ </select>
+ </section>
 
-    <table>
-      <thead>
-        <tr>
-          <th>时间</th>
-          <th>厂商</th>
-          <th>漏洞类型</th>
-          <th>等级</th>
-          <th>目标</th>
-          <th>请求</th>
-          <th>状态码</th>
-        </tr>
-      </thead>
-      <tbody id="tbody"></tbody>
-    </table>
-    <footer class="watermark">author: jenn02</footer>
-  </main>
-  <script type="module" src="./results.js"></script>
+ <table>
+ <thead>
+ <tr>
+ <th>时间</th>
+ <th>厂商</th>
+ <th>漏洞类型</th>
+ <th>等级</th>
+ <th>来源</th>
+ <th>目标</th>
+ <th>请求</th>
+ <th>状态码</th>
+ <th>响应长度</th>
+ <th>链接</th>
+ <th>证据</th>
+ </tr>
+ </thead>
+ <tbody id="tbody"></tbody>
+ </table>
+ <footer class="watermark">author: jenn02</footer>
+ </main>
+ <script type="module" src="./results.js"></script>
 </body>
 </html>

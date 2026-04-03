@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bucket-scan batch</title>
+  <link rel="stylesheet" href="./batch.css" />
+</head>
+<body>
+  <main class="wrap">
+    <div class="title-wrap">
+      <img src="../../jenn.png" alt="bucket-scan" class="title-logo" />
+      <h1>bucket-scan 批量遍历</h1>
+    </div>
+
+    <label class="block">
+      <span>Bucket 根地址（每行一个，仅返回图片/pdf/doc/docx/txt，最多10条）</span>
+      <textarea id="bucket-input" placeholder="https://example-bucket.oss-cn-hangzhou.aliyuncs.com&#10;test-1250000.cos.ap-guangzhou.myqcloud.com"></textarea>
+    </label>
+
+    <div class="actions">
+      <button id="start">开始</button>
+      <button id="stop" class="danger">停止</button>
+      <button id="bulk-open" class="ghost">批量打开可预览</button>
+      <span id="msg"></span>
+    </div>
+
+    <section class="stats" id="stats"></section>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Bucket</th>
+          <th>Key</th>
+          <th>大小</th>
+          <th>最后修改</th>
+          <th>链接</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+
+    <label class="block">
+      <span>错误信息</span>
+      <textarea id="errors" readonly></textarea>
+    </label>
+
+    <footer class="watermark">author: jenn02</footer>
+  </main>
+
+  <script type="module" src="./batch.js"></script>
+</body>
+</html>
