@@ -123,6 +123,7 @@ bucket-scan/
 
 <img width="2397" height="1376" alt="image" src="https://github.com/user-attachments/assets/347b2b3c-6c6b-469b-b953-2efef38c39dd" />
 
-<img width="2560" height="1537" alt="image" src="https://github.com/user-attachments/assets/ca7e7800-a3d9-4a31-8b9a-1270973ae222" />
+<img width="2252" height="1288" alt="image" src="https://github.com/user-attachments/assets/1ef5ad1b-7263-4c14-b3e7-cdf70f6a6599" />
+
 
 author: jenn02
